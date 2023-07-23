@@ -14,7 +14,10 @@
   },
   "scripts": {
     "start": "cds-serve",
-    "watch": "cds watch"
+    "watch": "cds watch",
+    "gitpush": "git push -u origin  main",
+    "cdsdeploy" : "cds deploy", 
+    "cdscompile": "cds compile srv/catalog-service.cds -2 sql"
   },
   "cds": {
     "requires": {
