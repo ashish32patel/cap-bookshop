@@ -1,0 +1,19 @@
+GET http://localhost:4004/catalog/Authors 
+
+###
+GET http://localhost:4004/catalog/Books
+
+###
+POST http://localhost:4004/catalog/Books
+Content-Type: application/json
+
+{"ID": 101, "title": "rich dad poop dad"}
+
+###
+POST http://localhost:4004/catalog/Orders
+Content-Type: application/json
+
+{"book_ID": 208, "quantity": 100}
+
+###
+GET http://localhost:4004/catalog/Orders
