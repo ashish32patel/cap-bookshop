@@ -7,7 +7,10 @@
   "private": true,
   "dependencies": {
     "@sap/cds": "^6",
-    "express": "^4"
+    "express": "^4",
+    "hdb": "^0.19.0",
+    "@sap/xssec": "^3",
+    "passport": "^0"
   },
   "devDependencies": {
     "sqlite3": "^5"
@@ -16,15 +19,37 @@
     "start": "cds-serve",
     "watch": "cds watch",
     "gitpush": "git push -u origin  main",
-    "cdsdeploy" : "cds deploy", 
-    "cdscompile": "cds compile srv/catalog-service.cds -2 sql"
+    "cdsdeploy": "cds deploy",
+    "cdscompile": "cds compile srv/catalog-service.cds -2 sql",
+    "addHana": "cds add hana",
+    "cdsbuildproduction": "cds build --production",
+    "cdsdeployhana": "cds deploy --to hana",
+    "cflogin": "cf login",
+    "cftarget": "cf target",
+    "cfservices": "cf services",
+    "cfapps": "cf apps",
+    "cdsversion": "cds -v",
+    "cdsaddmta": "cds add mta",
+    "mbtbuild": "mbt build"
   },
   "cds": {
+    "features": {
+      "fiori_preview": true
+    },
+    "hana": {
+      "deploy-format": "hdbtable"
+    },
     "requires": {
       "db": {
-        "kind": "sqlite",
+        "kind": "sql",
         "credentials": {
           "database": "bookshop.db"
+        }
+      },
+      "[production]": {
+        "auth": "xsuaa",
+        "db": {
+          "kind": "hana-cloud"
         }
       }
     }
